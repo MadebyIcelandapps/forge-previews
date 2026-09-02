@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sægreifinn | Seafood Restaurant | Reykjavík</title>
+  <meta name="description" content="Sægreifinn is a seafood restaurant at Geirsgata 8 in Reykjavík. Open for lunch 11:30-17:00 and dinner 18:00-22:00. Call +354 553 1500.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0c3554;
+      --navy-dark:  #071e30;
+      --gold:       #b8922a;
+      --gold-light: #d4a83a;
+      --cream:      #f8f6f1;
+      --white:      #ffffff;
+      --text:       #1a1a1a;
+      --muted:      #5a5a5a;
+      --border:     #ddd8cf;
+      --gap:        80px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ---- NAV ---- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+    }
+
+    .nav-brand {
+      color: #fff;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--gold);
+      color: #fff;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding: 8px 16px;
+      border-radius: 3px;
+      transition: background 0.15s;
+    }
+
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-cta svg { flex-shrink: 0; }
+
+    .nav-mobile-cta {
+      display: none;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      height: 62vh;
+      min-height: 340px;
+      max-height: 540px;
+      background: var(--navy-dark);
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0.65;
+    }
+
+    .hero-img-slot {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .hero-img-slot span {
+      color: rgba(255,255,255,0.2);
+      font-family: system-ui, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        to top,
+        rgba(7,30,48,0.88) 0%,
+        rgba(7,30,48,0.28) 55%,
+        transparent 100%
+      );
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: 0 44px 52px;
+    }
+
+    .eyebrow {
+      font-family: system-ui, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-weight: normal;
+      color: #fff;
+      line-height: 1.05;
+    }
+
+    .hero-tagline {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ---- QUICK BAR ---- */
+    .quick-bar {
+      background: var(--navy);
+      color: #fff;
+      padding: 0 28px;
+    }
+
+    .quick-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .quick-icon { color: var(--gold-light); flex-shrink: 0; }
+
+    .quick-label {
+      font-family: system-ui, sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 3px;
+    }
+
+    .quick-value {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.35;
+    }
+
+    .quick-value a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+    }
+
+    .quick-value a:hover { color: var(--gold-light); }
+
+    /* ---- SECTIONS ---- */
+    section { padding: var(--gap) 28px; }
+    .container { max-width: 960px; margin: 0 auto; }
+
+    .section-label {
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: normal;
+      color: var(--navy);
+      line-height: 1.18;
+      margin-bottom: 6px;
+    }
+
+    .rule {
+      width: 44px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0 28px;
+    }
+
+    .body-copy {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.8;
+    }
+
+    /* ---- ABOUT ---- */
+    .about { background: var(--white); }
+
+    .placeholder {
+      margin-top: 28px;
+      padding: 20px 22px;
+      border: 1.5px dashed #ccc8c0;
+      border-radius: 4px;
+      background: #f3f1ec;
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: #888;
+      max-width: 580px;
+    }
+
+    .placeholder strong {
+      display: block;
+      color: #666;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    /* ---- HOURS ---- */
+    .hours { background: var(--cream); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .hours-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 28px 24px;
+      border-top: 3px solid var(--gold);
+    }
+
+    .hours-card-label {
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .hours-card-time {
+      font-size: 1.55rem;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .hours-card-days {
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hours-note {
+      font-family: system-ui, sans-serif;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .hours-note a { color: var(--navy); }
+    .hours-note a:hover { color: var(--gold); }
+
+    /* ---- LOCATION ---- */
+    .location { background: var(--navy); padding-bottom: calc(var(--gap) + 16px); }
+    .location .section-label { color: var(--gold-light); }
+    .location h2 { color: #fff; }
+    .location .rule { background: var(--gold-light); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--gold-light);
+    }
+
+    .contact-label {
+      font-family: system-ui, sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      color: rgba(255,255,255,0.88);
+      font-size: 1rem;
+      text-decoration: none;
+      line-height: 1.5;
+      display: block;
+    }
+
+    .contact-value:hover { color: var(--gold-light); }
+
+    .map-slot {
+      aspect-ratio: 4 / 3;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px dashed rgba(255,255,255,0.18);
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.28);
+      font-family: system-ui, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--navy-dark);
+      padding: 32px 28px;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--gold-light); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 720px) {
+      :root { --gap: 56px; }
+
+      .nav-links { display: none; }
+      .nav-cta   { display: none; }
+      .nav-mobile-cta {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--gold-light);
+        text-decoration: none;
+        font-family: system-ui, sans-serif;
+        font-size: 0.85rem;
+      }
+
+      .quick-bar-inner {
+        grid-template-columns: 1fr;
+        border-left: none;
+      }
+
+      .quick-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 18px 4px;
+      }
+
+      .hero-content { padding: 0 24px 36px; }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .map-slot { aspect-ratio: 16 / 9; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-title { font-size: 2.1rem; }
+      .quick-bar  { padding: 0 16px; }
+      section     { padding: var(--gap) 18px; }
+    }
+
+    /* ---- FOCUS ---- */
+    a:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Site navigation">
+    <a href="#" class="nav-brand">Sægreifinn</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+
+    <a href="tel:+3545531500" class="nav-cta" aria-label="Call us at +354 553 1500">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      +354 553 1500
+    </a>
+
+    <a href="tel:+3545531500" class="nav-mobile-cta" aria-label="Call us">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Call
+    </a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" aria-label="Restaurant header">
+    <div class="hero-img-slot" aria-hidden="true">
+      <span>Photo</span>
+      <span style="font-size:0.65rem">Restaurant exterior or dining room</span>
+    </div>
+    <img
+      src="images/hero.jpg"
+      alt="Sægreifinn restaurant"
+      loading="eager"
+      class="hero-img"
+      onerror="this.style.display='none'"
+    >
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Seafood Restaurant &middot; Reykjavík</p>
+      <h1 class="hero-title">Sægreifinn</h1>
+      <p class="hero-tagline">Fresh Icelandic seafood at the old harbour</p>
+    </div>
+  </header>
+
+  <!-- Quick facts bar -->
+  <div class="quick-bar" aria-label="Key information">
+    <div class="quick-bar-inner">
+
+      <div class="quick-item">
+        <span class="quick-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        <div>
+          <p class="quick-label">Open today</p>
+          <p class="quick-value">11:30 &ndash; 17:00 &nbsp;&middot;&nbsp; 18:00 &ndash; 22:00</p>
+        </div>
+      </div>
+
+      <div class="quick-item">
+        <span class="quick-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <div>
+          <p class="quick-label">Address</p>
+          <p class="quick-value">
+            <a href="https://maps.google.com/?q=Geirsgata+8+Reykjavik+101" target="_blank" rel="noopener">Geirsgata 8, Reykjavík 101</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="quick-item">
+        <span class="quick-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </span>
+        <div>
+          <p class="quick-label">Phone</p>
+          <p class="quick-value"><a href="tel:+3545531500">+354 553 1500</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <p class="section-label">The restaurant</p>
+      <h2>Seafood from Icelandic waters</h2>
+      <div class="rule"></div>
+      <p class="body-copy">
+        Sægreifinn sits at Geirsgata 8 in central Reykjavík, steps from the old harbour. The kitchen focuses on fresh seafood, served simply so the fish speaks for itself.
+      </p>
+      <div class="placeholder">
+        <strong>[ADD YOUR OWN DESCRIPTION]</strong>
+        Replace this block with 2 to 3 sentences in your own words: what makes Sægreifinn special, what to order, what the atmosphere is like.
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours -->
+  <section class="hours" id="hours">
+    <div class="container">
+      <p class="section-label">Opening hours</p>
+      <h2>When we are open</h2>
+      <div class="rule"></div>
+      <div class="hours-grid">
+        <div class="hours-card">
+          <p class="hours-card-label">Lunch</p>
+          <p class="hours-card-time">11:30 &ndash; 17:00</p>
+          <p class="hours-card-days">[ADD DAYS OPEN, e.g. Monday to Saturday]</p>
+        </div>
+        <div class="hours-card">
+          <p class="hours-card-label">Dinner</p>
+          <p class="hours-card-time">18:00 &ndash; 22:00</p>
+          <p class="hours-card-days">[ADD DAYS OPEN, e.g. Monday to Saturday]</p>
+        </div>
+      </div>
+      <p class="hours-note">
+        To confirm hours or make a reservation, call
+        <a href="tel:+3545531500">+354 553 1500</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="location" id="location">
+    <div class="container">
+      <p class="section-label">Find us</p>
+      <h2>Where we are</h2>
+      <div class="rule"></div>
+      <div class="location-grid">
+        <div>
+          <ul class="contact-list" role="list">
+
+            <li class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <p class="contact-label">Address</p>
+                <a class="contact-value" href="https://maps.google.com/?q=Geirsgata+8+Reykjavik+101" target="_blank" rel="noopener">
+                  Geirsgata 8<br>Reykjavík 101, Iceland
+                </a>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </span>
+              <div>
+                <p class="contact-label">Phone</p>
+                <a class="contact-value" href="tel:+3545531500">+354 553 1500</a>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <div>
+                <p class="contact-label">Hours</p>
+                <span class="contact-value">Lunch: 11:30 &ndash; 17:00</span>
+                <span class="contact-value">Dinner: 18:00 &ndash; 22:00</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div
+          class="map-slot"
+          role="img"
+          aria-label="Map placeholder. Embed a Google Maps or OpenStreetMap iframe here showing Geirsgata 8, Reykjavik."
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Embed map here</span>
+          <span style="font-size:0.68rem; opacity:0.7; margin-top:2px">Geirsgata 8, Reykjavík 101</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      &copy; <span id="yr"></span> Sægreifinn
+      &nbsp;&middot;&nbsp;
+      Geirsgata 8, Reykjavík 101
+      &nbsp;&middot;&nbsp;
+      <a href="tel:+3545531500">+354 553 1500</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
