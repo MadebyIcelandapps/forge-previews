@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kjarvalsstaðir is a cafe in Reykjavik, open every day from 10:00 to 17:00. Call +354 411 6425.">
+  <title>Kjarvalsstaðir Cafe</title>
+  <style>
+
+    /* ---- Reset ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ---- Tokens ---- */
+    :root {
+      --cream:     #F7F4EF;
+      --cream-alt: #EDE8DF;
+      --ink:       #18160F;
+      --ink-mid:   #3C3930;
+      --ink-soft:  #6A6660;
+      --gold:      #96711A;
+      --gold-lt:   #C8992E;
+      --border:    #D5CEC4;
+      --white:     #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui,
+                   'Helvetica Neue', Arial, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* ---- Skip link ---- */
+    .skip {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.875rem;
+      border-radius: 0 0 4px 4px;
+      text-decoration: none;
+      z-index: 999;
+    }
+    .skip:focus { top: 0; }
+
+    /* ---- Nav ---- */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      z-index: 200;
+    }
+
+    .nav__row {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.125rem;
+      font-weight: normal;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav__logo:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .nav__list {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav__list a {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav__list a:hover { color: var(--gold); }
+    .nav__list a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem;
+      color: var(--ink);
+      border-radius: 3px;
+    }
+    .nav__toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* ---- Photo slots ---- */
+    .photo {
+      display: block;
+      background: var(--cream-alt);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      width: 100%;
+    }
+    .photo--hero  { aspect-ratio: 16 / 7; }
+    .photo--panel { aspect-ratio: 4 / 3; }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-label {
+      font-size: 0.74rem;
+      color: var(--ink-soft);
+      padding: 0.35rem 0 0;
+      font-style: italic;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4.5rem;
+    }
+
+    .hero__image { margin-bottom: 3rem; }
+
+    .eyebrow {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero__title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.75rem, 7vw, 4.5rem);
+      font-weight: normal;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__desc {
+      font-size: 1.125rem;
+      color: var(--ink-mid);
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 2.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.18s;
+    }
+    .btn:hover { background: var(--gold-lt); }
+    .btn:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* ---- Section base ---- */
+    .section { padding: 5rem 1.5rem; }
+    .section__inner { max-width: 1120px; margin: 0 auto; }
+
+    .sec-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .sec-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.875rem, 4.5vw, 2.75rem);
+      font-weight: normal;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+      line-height: 1.15;
+    }
+
+    /* ---- Placeholder style ---- */
+    .ph {
+      display: inline;
+      background: rgba(150,113,26,0.08);
+      border: 1px dashed var(--border);
+      border-radius: 3px;
+      padding: 0.1em 0.45em;
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 0.9em;
+    }
+
+    /* ---- About section ---- */
+    #about { background: var(--cream-alt); }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+
+    .about__body {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      line-height: 1.85;
+    }
+    .about__body p + p { margin-top: 1rem; }
+
+    /* ---- Hours section ---- */
+    #hours { background: var(--ink); }
+
+    #hours .sec-label  { color: var(--gold-lt); }
+    #hours .sec-title  { color: var(--white); }
+
+    .hours-board {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 0.5rem;
+      padding: 2.5rem 3rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    .hours-board__day {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-lt);
+      margin-bottom: 0.5rem;
+    }
+
+    .hours-board__time {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .hours-board__note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .hours-aside {
+      margin-top: 2.5rem;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.35);
+      font-style: italic;
+    }
+
+    /* ---- Location section ---- */
+    .location__address {
+      font-size: 1.0625rem;
+      color: var(--ink-mid);
+      line-height: 2.1;
+      font-style: normal;
+      margin-bottom: 2.5rem;
+    }
+
+    .map-frame {
+      width: 100%;
+      aspect-ratio: 16 / 6;
+      min-height: 240px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--cream-alt);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .map-link:hover { text-decoration: underline; }
+    .map-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+    /* ---- Contact section ---- */
+    #contact { background: var(--cream-alt); }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 1.75rem;
+    }
+
+    .card__icon {
+      width: 32px;
+      height: 32px;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .card__label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-soft);
+      margin-bottom: 0.375rem;
+    }
+
+    .card__value {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .card__value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .card__value a:hover { color: var(--gold); }
+    .card__value a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      background: var(--ink);
+      padding: 3rem 1.5rem;
+    }
+
+    .footer__row {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__name {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--white);
+      font-size: 1.0625rem;
+      font-weight: normal;
+    }
+
+    .footer__sub {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.38);
+    }
+
+    /* ---- Responsive: tablet ---- */
+    @media (max-width: 800px) {
+      .about__grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+      }
+    }
+
+    /* ---- Responsive: mobile ---- */
+    @media (max-width: 600px) {
+      .nav__list {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        border-bottom: 1px solid var(--border);
+        padding: 0.375rem 0 0.75rem;
+      }
+      .nav__list.is-open { display: flex; }
+      .nav__list a { display: block; padding: 0.75rem 1.5rem; }
+      .nav__list a:hover { background: var(--cream-alt); color: var(--gold); }
+
+      .nav__toggle { display: block; }
+
+      .section { padding: 3.5rem 1.25rem; }
+      .hero { padding: 2.5rem 1.25rem 3.5rem; }
+
+      .hours-board { padding: 1.75rem 2rem; }
+
+      .footer__row { flex-direction: column; gap: 0.5rem; }
+    }
+
+    @media (max-width: 400px) {
+      .hero__title { font-size: 2.25rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header>
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav__row">
+      <a href="#home" class="nav__logo">Kjarvalsstaðir</a>
+
+      <button
+        class="nav__toggle"
+        id="navToggle"
+        aria-expanded="false"
+        aria-controls="navList"
+        aria-label="Open navigation menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="5"  x2="20" y2="5"/>
+          <line x1="2" y1="11" x2="20" y2="11"/>
+          <line x1="2" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+
+      <ul class="nav__list" id="navList" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <div class="hero" id="home">
+    <div class="hero__image">
+      <div class="photo photo--hero" role="img" aria-label="Cafe interior photo slot">
+        <img
+          src="images/hero.jpg"
+          alt="The interior of Kjarvalsstaðir cafe, Reykjavik"
+          loading="eager"
+          onerror="this.remove()"
+        >
+      </div>
+      <p class="photo-label">Photo: cafe interior</p>
+    </div>
+
+    <p class="eyebrow">Cafe in Reykjavik</p>
+    <h1 class="hero__title">Kjarvalsstaðir</h1>
+    <p class="hero__desc">
+      <span class="ph">[ADD: A sentence or two about the cafe. What do you serve? What is the atmosphere like?]</span>
+    </p>
+    <a href="#hours" class="btn">See opening hours</a>
+  </div>
+
+  <!-- About -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="section__inner">
+      <div class="about__grid">
+        <div>
+          <p class="sec-label">The cafe</p>
+          <h2 class="sec-title" id="about-title">A place to stop</h2>
+          <div class="about__body">
+            <p>
+              Kjarvalsstaðir is a cafe in Reykjavik, open every day of the week.
+              <span class="ph">[ADD: What do you serve? Coffee, tea, pastries, light food?]</span>
+            </p>
+            <p>
+              <span class="ph">[ADD: One or two more sentences about the cafe, its character, or what makes it worth visiting]</span>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="photo photo--panel" role="img" aria-label="Food and drinks photo slot">
+            <img
+              src="images/drinks.jpg"
+              alt="Coffee and food at Kjarvalsstaðir"
+              loading="lazy"
+              onerror="this.remove()"
+            >
+          </div>
+          <p class="photo-label">Photo: coffee and food</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours -->
+  <section class="section" id="hours" aria-labelledby="hours-title">
+    <div class="section__inner">
+      <p class="sec-label">When we are open</p>
+      <h2 class="sec-title" id="hours-title">Opening hours</h2>
+      <div class="hours-board">
+        <p class="hours-board__day">Monday to Sunday</p>
+        <p class="hours-board__time">10:00 - 17:00</p>
+        <p class="hours-board__note">Open every day</p>
+      </div>
+      <p class="hours-aside">
+        <span class="ph" style="border-color:rgba(255,255,255,0.18); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.35);">
+          [ADD: Any note about public holiday closures, if applicable]
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section" id="location" aria-labelledby="location-title">
+    <div class="section__inner">
+      <p class="sec-label">Where to find us</p>
+      <h2 class="sec-title" id="location-title">Reykjavik</h2>
+      <address class="location__address">
+        <span class="ph">[ADD: Street address]</span><br>
+        <span class="ph">[ADD: Postal code]</span>, Reykjavik<br>
+        Iceland
+      </address>
+      <div class="map-frame" aria-label="Map of Kjarvalsstaðir location on OpenStreetMap">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-21.921%2C64.135%2C-21.897%2C64.148&amp;layer=mapnik&amp;marker=64.14120%2C-21.90876"
+          title="Kjarvalsstaðir on OpenStreetMap"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <a
+        class="map-link"
+        href="https://www.openstreetmap.org/node/971164355"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Open in OpenStreetMap</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="section__inner">
+      <p class="sec-label">Get in touch</p>
+      <h2 class="sec-title" id="contact-title">Contact</h2>
+      <div class="contact-cards">
+
+        <div class="card">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                     19.79 19.79 0 0 1-8.63-3.07
+                     A19.5 19.5 0 0 1 4.19 12
+                     19.79 19.79 0 0 1 1.12 3.34
+                     A2 2 0 0 1 3.1 1.12h3
+                     a2 2 0 0 1 2 1.72
+                     c.127.96.361 1.903.7 2.81
+                     a2 2 0 0 1-.45 2.11
+                     L7.09 8.91
+                     a16 16 0 0 0 6 6
+                     l1.27-1.27
+                     a2 2 0 0 1 2.11-.45
+                     c.907.339 1.85.573 2.81.7
+                     A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <p class="card__label">Phone</p>
+          <p class="card__value"><a href="tel:+3544116425">+354 411 6425</a></p>
+        </div>
+
+        <div class="card">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <p class="card__label">Location</p>
+          <p class="card__value" style="font-size:1.0625rem;">Reykjavik, Iceland</p>
+        </div>
+
+        <div class="card">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+          <p class="card__label">Hours</p>
+          <p class="card__value" style="font-size:1.0625rem;">Mon - Sun<br>10:00 - 17:00</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer__row">
+    <p class="footer__name">Kjarvalsstaðir</p>
+    <p class="footer__sub">Cafe in Reykjavik, Iceland</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var list   = document.getElementById('navList');
+
+    toggle.addEventListener('click', function () {
+      var open = list.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    list.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        list.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

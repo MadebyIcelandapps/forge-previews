@@ -1,0 +1,14 @@
+[
+  {
+    "file": "hero.jpg",
+    "alt": "The interior of Kjarvalsstaðir cafe, Reykjavik",
+    "aspect": "16:7",
+    "prompt": "Wide interior shot of a cozy Nordic cafe. Natural daylight from large windows. Simple, warm Scandinavian furniture: wooden chairs and small tables. Coffee cups on tables, a relaxed and quiet atmosphere. Clean walls, possibly with some art or plants. No people required. Warm neutral tones. Photorealistic, horizontal orientation."
+  },
+  {
+    "file": "drinks.jpg",
+    "alt": "Coffee and food at Kjarvalsstaðir",
+    "aspect": "4:3",
+    "prompt": "Close-up of a well-made espresso or flat white and a pastry or light snack on a cafe table. Clean, minimal presentation on simple crockery. Warm, appetizing tones. Shallow depth of field. No text or branding visible. Photorealistic."
+  }
+]
