@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Svarta Kaffið | Pub in Reykjavík</title>
+  <meta name="description" content="Svarta Kaffið is a pub in Reykjavík serving regional food and drink. Open Mon to Sat 11:30 to 22:00, Sunday 12:00 to 22:00. Call +354 551 2999.">
+  <meta property="og:title" content="Svarta Kaffið | Pub in Reykjavík">
+  <meta property="og:description" content="Regional food and drink in Reykjavík. Open Mon to Sat 11:30 to 22:00, Sunday 12:00 to 22:00.">
+  <meta property="og:type" content="restaurant">
+
+  <style>
+    /* ── Custom properties ── */
+    :root {
+      --bg:        #0d0d0d;
+      --surface:   #181818;
+      --card:      #1e1e1e;
+      --border:    #2c2c2c;
+      --text:      #ddd7cc;
+      --muted:     #7a7470;
+      --accent:    #bf8726;
+      --accent-h:  #d99c38;
+      --light:     #f0ece5;
+      --radius:    2px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--light);
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 0.6rem; }
+    p  { color: var(--text); }
+    a  { color: var(--accent); text-decoration: none; transition: color 0.18s; }
+    a:hover { color: var(--accent-h); }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: var(--radius);
+    }
+
+    /* ── Utilities ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+    .eyebrow {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .placeholder {
+      border-left: 2px solid var(--accent);
+      padding: 0.6rem 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.92rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background 0.18s, color 0.18s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .btn-primary:hover { background: var(--accent-h); color: var(--bg); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── Nav ── */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13, 13, 13, 0.95);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+    }
+    .nav-logo {
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--light);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0;
+      transition: color 0.18s;
+    }
+    .nav-links a:hover { color: var(--light); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.3rem;
+      color: var(--light);
+    }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.38);
+    }
+    .hero-bg-label {
+      display: none;
+      position: absolute;
+      inset: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-bg-label svg { opacity: 0.3; margin-bottom: 0.25rem; }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13,13,13,0.92) 0%,
+        rgba(13,13,13,0.4) 50%,
+        rgba(13,13,13,0.1) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      padding: 4rem 1.5rem;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.25rem;
+    }
+    .hero-title { color: var(--light); margin-bottom: 0.75rem; }
+    .hero-sub {
+      color: rgba(221, 215, 204, 0.75);
+      font-size: 1.05rem;
+      max-width: 440px;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    /* ── About ── */
+    #about .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    .about-text p { margin-top: 1rem; }
+    .about-text p:first-of-type { margin-top: 1.25rem; }
+    .photo-slot {
+      position: relative;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-slot-label {
+      display: none;
+      position: absolute;
+      inset: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .photo-slot-label svg { opacity: 0.3; margin-bottom: 0.2rem; }
+    .about-photo { aspect-ratio: 4 / 3; }
+
+    /* ── Hours ── */
+    #hours { background: var(--surface); }
+    .hours-wrap { max-width: 640px; margin-top: 2.25rem; }
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .hours-table tr:nth-child(even) td { background: var(--card); }
+    .hours-table tr:nth-child(odd)  td { background: var(--bg); }
+    .hours-table td {
+      padding: 0.9rem 1.2rem;
+      font-size: 0.95rem;
+    }
+    .hours-table td:first-child {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .hours-table td:last-child {
+      color: var(--light);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+    .hours-table tr + tr td { border-top: 1px solid var(--border); }
+    .today-badge {
+      display: none;
+      margin-left: 0.5rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--radius);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+
+    /* ── Location ── */
+    #location .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+    .loc-details h2 { margin-bottom: 1.25rem; }
+    .loc-address {
+      font-style: normal;
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .loc-address .ph { color: var(--accent); font-style: italic; font-size: 0.88rem; }
+    .loc-note { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.75rem; }
+    .loc-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .map-slot {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .map-slot iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .map-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 2rem;
+    }
+    .map-placeholder svg { opacity: 0.3; }
+    .map-placeholder strong { color: var(--text); font-size: 0.88rem; }
+
+    /* ── Contact ── */
+    #contact { background: var(--surface); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.25rem;
+    }
+    .contact-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color 0.18s;
+    }
+    .contact-card:hover { border-color: var(--accent); }
+    .contact-card-icon { color: var(--accent); margin-bottom: 0.75rem; }
+    .contact-card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .contact-card-value { font-size: 1.05rem; }
+    .contact-card-value a { color: var(--light); }
+    .contact-card-value a:hover { color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.25rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .footer-brand { font-family: Georgia, serif; color: var(--light); font-size: 0.95rem; }
+    .footer-copy { color: var(--muted); font-size: 0.82rem; }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { color: var(--muted); font-size: 0.82rem; transition: color 0.18s; }
+    .footer-links a:hover { color: var(--light); }
+
+    /* ── Mobile nav ── */
+    @media (max-width: 680px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links li { border-top: 1px solid var(--border); }
+      .nav-links a { display: block; padding: 1rem 1.5rem; }
+      #nav { position: relative; }
+    }
+
+    /* ── Responsive layout ── */
+    @media (max-width: 800px) {
+      #about .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { order: -1; }
+      #location .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      section { padding: 3.5rem 0; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { display: none; }
+    }
+
+    @media (max-width: 360px) {
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Svarta <span>Kaffið</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="0" y1="2"  x2="22" y2="2"/>
+          <line x1="0" y1="8"  x2="22" y2="8"/>
+          <line x1="0" y1="14" x2="22" y2="14"/>
+        </svg>
+      </button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#about">The Pub</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#location">Find Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img
+        src="images/hero.jpg"
+        alt="Svarta Kaffið pub"
+        loading="eager"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      >
+      <div class="hero-bg-label" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <div>Photo: Svarta Kaffið exterior or interior</div>
+      </div>
+    </div>
+    <div class="hero-gradient" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Pub in Reykjavík</div>
+      <h1 class="hero-title">Svarta Kaffið</h1>
+      <p class="hero-sub">Regional food and drink, right in Reykjavík.</p>
+      <div class="hero-ctas">
+        <a href="#hours" class="btn btn-primary">Opening hours</a>
+        <a href="#location" class="btn btn-outline">Find us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Pub -->
+  <section id="about">
+    <div class="container">
+      <div class="inner">
+        <div class="about-text">
+          <div class="eyebrow">The Pub</div>
+          <h2>A pub in Reykjavík</h2>
+          <p class="placeholder">[ADD YOUR OWN DESCRIPTION HERE. What is the atmosphere like? What brings regulars back? Two or three sentences works well.]</p>
+          <p>Svarta Kaffið serves <strong>regional food</strong> alongside its drinks. The kitchen draws on Icelandic produce and traditional flavours.</p>
+          <p class="placeholder" style="margin-top:1.2rem;">[ADD DETAILS ABOUT YOUR FOOD AND DRINKS. What do you serve? Any specials or house favourites worth mentioning?]</p>
+        </div>
+        <div class="photo-slot about-photo">
+          <img
+            src="images/interior.jpg"
+            alt="Inside Svarta Kaffið"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="photo-slot-label" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Photo: inside the pub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours -->
+  <section id="hours">
+    <div class="container">
+      <div class="eyebrow">When we are open</div>
+      <h2>Opening Hours</h2>
+      <div class="hours-wrap">
+        <table class="hours-table">
+          <tbody>
+            <tr>
+              <td>
+                Monday
+                <span class="today-badge" data-day="1">Today</span>
+              </td>
+              <td>11:30 to 22:00</td>
+            </tr>
+            <tr>
+              <td>
+                Tuesday
+                <span class="today-badge" data-day="2">Today</span>
+              </td>
+              <td>11:30 to 22:00</td>
+            </tr>
+            <tr>
+              <td>
+                Wednesday
+                <span class="today-badge" data-day="3">Today</span>
+              </td>
+              <td>11:30 to 22:00</td>
+            </tr>
+            <tr>
+              <td>
+                Thursday
+                <span class="today-badge" data-day="4">Today</span>
+              </td>
+              <td>11:30 to 22:00</td>
+            </tr>
+            <tr>
+              <td>
+                Friday
+                <span class="today-badge" data-day="5">Today</span>
+              </td>
+              <td>11:30 to 22:00</td>
+            </tr>
+            <tr>
+              <td>
+                Saturday
+                <span class="today-badge" data-day="6">Today</span>
+              </td>
+              <td>11:30 to 22:00</td>
+            </tr>
+            <tr>
+              <td>
+                Sunday
+                <span class="today-badge" data-day="0">Today</span>
+              </td>
+              <td>12:00 to 22:00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location">
+    <div class="container">
+      <div class="inner">
+        <div class="loc-details">
+          <div class="eyebrow">Where to find us</div>
+          <h2>Find Us</h2>
+          <address class="loc-address">
+            <span class="ph">[ADD YOUR STREET ADDRESS]</span><br>
+            Reykjavík, Iceland
+          </address>
+          <p class="loc-note">
+            <span class="ph">[ADD A SHORT DIRECTIONS NOTE IF HELPFUL, e.g. "Two minutes walk from Hallgrimskirkja" or a nearby landmark.]</span>
+          </p>
+          <div class="loc-actions">
+            <a
+              href="https://www.openstreetmap.org/node/815775143"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >View on map</a>
+          </div>
+        </div>
+        <div class="map-slot">
+          <div class="map-placeholder">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <strong>Map embed</strong>
+            <span>Add your address above, then paste an embed code from Google Maps or OpenStreetMap here.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 12 19.79 19.79 0 01.79 3.38a2 2 0 011.98-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.91-.91a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div class="contact-card-label">Phone</div>
+          <div class="contact-card-value">
+            <a href="tel:+3545512999">+354 551 2999</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-card-label">Email</div>
+          <div class="contact-card-value">
+            <a href="mailto:svartakaffid@gmail.com">svartakaffid@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Svarta Kaffið</div>
+      <div class="footer-copy">&copy; <span id="year"></span> Svarta Kaffið. Reykjavík, Iceland.</div>
+      <ul class="footer-links">
+        <li><a href="#about">The Pub</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#location">Find Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const todayNum = new Date().getDay();
+    const badge = document.querySelector('.today-badge[data-day="' + todayNum + '"]');
+    if (badge) badge.style.display = 'inline-block';
+
+    const toggle  = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    toggle.addEventListener('click', function () {
+      const open = navMenu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    navMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navMenu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>

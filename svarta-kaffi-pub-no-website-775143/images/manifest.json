@@ -1,0 +1,14 @@
+[
+  {
+    "file": "hero.jpg",
+    "alt": "Svarta Kaffið pub, exterior or interior wide shot",
+    "aspect": "16:9",
+    "prompt": "Atmospheric wide-angle photograph of a dimly lit Icelandic pub at evening, dark timber interior, warm amber bar lighting, bottles lined behind a wooden bar, a few empty stools, cosy and lived-in, no people, editorial style, no text"
+  },
+  {
+    "file": "interior.jpg",
+    "alt": "Inside Svarta Kaffið, showing the seating area",
+    "aspect": "4:3",
+    "prompt": "Interior of a small Reykjavik pub, comfortable booths or tables, dark walls, warm tungsten lighting, unpretentious and welcoming, quiet hour before the evening crowd, editorial photograph, no text"
+  }
+]
