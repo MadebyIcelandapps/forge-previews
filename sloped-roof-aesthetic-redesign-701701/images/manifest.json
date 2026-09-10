@@ -1,0 +1,32 @@
+[
+  {
+    "file": "hero.jpg",
+    "alt": "Redesigned sloped cedar roof on a modern home, exterior view",
+    "aspect": "16:9",
+    "prompt": "Wide exterior photograph of a residential home with a steeply sloped cedar shingle roof. The roofline is clean and well-proportioned, the cedar shingles are a warm honey-brown with natural grain variation. Golden hour or overcast daylight. Sky visible above. Architectural photography style, no people."
+  },
+  {
+    "file": "cedar-detail.jpg",
+    "alt": "Close-up of cedar shingle roofing material showing natural grain",
+    "aspect": "4:3",
+    "prompt": "Close-up macro photograph of cedar wood shingles on a sloped roof. Natural grain texture, warm brown and grey tones from weathering, slight texture variation between shingles. Soft diffused natural light. No people, no distracting elements."
+  },
+  {
+    "file": "project-1-before-after.jpg",
+    "alt": "Side-by-side before and after comparison of a sloped cedar roof redesign",
+    "aspect": "21:9",
+    "prompt": "A split-image or wide side-by-side photo showing the same house before and after a cedar roof redesign. Left side: the original roof with older or plain geometry. Right side: the redesigned roof with improved roofline, cleaner aesthetics, and potentially a dormer or expanded eave. Exterior architectural photography, daylight, no people."
+  },
+  {
+    "file": "project-2-exterior.jpg",
+    "alt": "Exterior view of a redesigned cedar roof with clean roofline",
+    "aspect": "4:3",
+    "prompt": "Exterior photograph of a residential building featuring a newly redesigned sloped cedar roof. Sharp, clean roofline, warm cedar tones, well-maintained shingles. Architectural photography style, clear daylight or overcast sky, no people."
+  },
+  {
+    "file": "project-3-interior.jpg",
+    "alt": "Interior of a newly enclosed upper floor created by a roof redesign",
+    "aspect": "4:3",
+    "prompt": "Interior photograph of a bright, newly enclosed room under a sloped roof. Exposed or finished ceiling following the roofline, natural light from a window or skylight, clean finishes. The space reads as a usable floor plate: bedroom, loft, or living area. Architectural interior photography style, no people."
+  }
+]
