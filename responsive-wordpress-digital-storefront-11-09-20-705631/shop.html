@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - DigitalVault</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        DigitalVault
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="shop.html" class="cart-link" aria-label="Shopping cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero page-hero--small">
+      <div class="container">
+        <h1>Digital Products</h1>
+        <p>Instant downloads for creators, freelancers and teams</p>
+      </div>
+    </div>
+
+    <div class="container shop-layout">
+      <!-- SIDEBAR FILTERS -->
+      <aside class="shop-sidebar" id="shop-sidebar">
+        <div class="sidebar-section">
+          <h3>Search</h3>
+          <div class="search-field">
+            <input type="search" id="search-input" placeholder="Search products..." aria-label="Search products">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <h3>Category</h3>
+          <ul class="filter-list" id="category-filter">
+            <li><button class="filter-btn active" data-cat="all">All Products</button></li>
+            <li><button class="filter-btn" data-cat="templates">Templates</button></li>
+            <li><button class="filter-btn" data-cat="ebooks">eBooks &amp; Guides</button></li>
+            <li><button class="filter-btn" data-cat="tools">Tools &amp; Scripts</button></li>
+            <li><button class="filter-btn" data-cat="assets">Design Assets</button></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h3>Sort By</h3>
+          <select id="sort-select" class="sort-select" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+        <div class="sidebar-section">
+          <h3>Price Range</h3>
+          <div class="price-range">
+            <label for="price-max" class="sr-only">Maximum price</label>
+            <input type="range" id="price-max" min="0" max="200" value="200" step="5">
+            <div class="price-range-labels">
+              <span>$0</span>
+              <span id="price-max-label">$200</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- PRODUCT GRID -->
+      <div class="shop-main">
+        <div class="shop-toolbar">
+          <p class="results-count" id="results-count">Loading products...</p>
+          <button class="filter-toggle-btn" id="filter-toggle" aria-expanded="false" aria-controls="shop-sidebar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+            Filters
+          </button>
+        </div>
+        <div class="products-grid" id="products-grid">
+          <!-- Injected by JS -->
+        </div>
+        <div class="no-results" id="no-results" hidden>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>No products match your search. Try different keywords or clear your filters.</p>
+          <button class="btn btn-outline" id="clear-filters">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-drawer-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-drawer-body" id="cart-items">
+      <p class="cart-empty">Your cart is empty.</p>
+    </div>
+    <div class="cart-drawer-footer" id="cart-footer" hidden>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cart-total">$0.00</strong>
+      </div>
+      <a href="checkout.html" class="btn btn-primary btn-block">Proceed to Checkout</a>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          DigitalVault
+        </a>
+        <p>Premium digital products delivered instantly.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">All Products</a></li>
+            <li><a href="shop.html?cat=templates">Templates</a></li>
+            <li><a href="shop.html?cat=ebooks">eBooks</a></li>
+            <li><a href="shop.html?cat=tools">Tools</a></li>
+            <li><a href="shop.html?cat=assets">Design Assets</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="downloads.html">My Downloads</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="refunds.html">Refund Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 DigitalVault. All rights reserved.</p>
+        <div class="payment-icons">
+          <span class="payment-badge">Stripe</span>
+          <span class="payment-badge">PayPal</span>
+          <span class="payment-badge">SSL Secured</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <p>We use cookies to keep your cart and remember preferences. <a href="privacy.html">Privacy Policy</a></p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost btn-sm" id="cookie-decline">Essential only</button>
+      <button class="btn btn-primary btn-sm" id="cookie-accept">Accept all</button>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

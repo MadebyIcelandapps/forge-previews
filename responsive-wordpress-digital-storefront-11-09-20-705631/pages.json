@@ -1,0 +1,12 @@
+[
+  {"file": "index.html",     "title": "Home",          "summary": "Hero, category grid, featured products, how-it-works, reviews placeholder and newsletter signup."},
+  {"file": "shop.html",      "title": "Shop",          "summary": "Full product catalogue with sidebar filters (category, search, price, sort) and cart drawer."},
+  {"file": "checkout.html",  "title": "Checkout",      "summary": "Single-page checkout with contact details, Stripe/PayPal selection, GDPR consent and order summary sidebar."},
+  {"file": "about.html",     "title": "About",         "summary": "Brand story, quality standards, inline FAQ accordion and stat placeholders."},
+  {"file": "contact.html",   "title": "Contact",       "summary": "Contact form with topic selector and mailto fallback; support info sidebar."},
+  {"file": "faq.html",       "title": "FAQ",           "summary": "Categorised accordion FAQ covering downloads, payment, licensing and refunds."},
+  {"file": "downloads.html", "title": "My Downloads",  "summary": "Order lookup form for customers to re-retrieve expired download links."},
+  {"file": "privacy.html",   "title": "Privacy Policy","summary": "GDPR-compliant privacy policy covering data collected, cookies, sharing, retention and rights."},
+  {"file": "terms.html",     "title": "Terms of Service","summary": "Terms covering licences, payment, delivery and limitation of liability."},
+  {"file": "refunds.html",   "title": "Refund Policy", "summary": "Digital goods refund policy: when refunds apply, how to request, chargeback note."}
+]

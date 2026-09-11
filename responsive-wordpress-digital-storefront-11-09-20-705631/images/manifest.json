@@ -1,0 +1,14 @@
+[
+  {
+    "file": "hero.jpg",
+    "alt": "Clean modern desk with an open laptop showing a digital product dashboard, a notebook and a coffee cup",
+    "aspect": "4:3",
+    "prompt": "A bright, minimal workspace photographed from above: white desk, open MacBook showing a clean dark UI, a spiral notebook open to a blank page, a white ceramic coffee mug. Natural window light. No clutter. Professional and modern."
+  },
+  {
+    "file": "about.jpg",
+    "alt": "Creator focused at their desk working on a digital project",
+    "aspect": "3:4",
+    "prompt": "A person (gender-neutral, hands only visible) typing on a laptop at a tidy wooden desk. Side-lit by warm natural light. Clean background. Conveys focus and craft without showing a face."
+  }
+]

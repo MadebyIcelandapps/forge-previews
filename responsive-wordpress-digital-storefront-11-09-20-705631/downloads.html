@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Downloads - DigitalVault</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        DigitalVault
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="shop.html" class="cart-link" aria-label="Shopping cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="page-hero page-hero--small">
+      <div class="container">
+        <h1>My Downloads</h1>
+        <p>Look up your purchase using the email address and order number from your receipt.</p>
+      </div>
+    </div>
+    <section class="downloads-section">
+      <div class="container">
+        <div class="downloads-lookup">
+          <p>Enter your order details below to retrieve your download links. Download links are valid for 48 hours from the time of purchase.</p>
+          <form id="lookup-form" novalidate>
+            <div class="form-group">
+              <label for="lookup-email">Email address used at checkout</label>
+              <input type="email" id="lookup-email" required placeholder="your@email.com" autocomplete="email">
+              <span class="field-error" id="err-lookup-email"></span>
+            </div>
+            <div class="form-group">
+              <label for="lookup-order">Order number</label>
+              <input type="text" id="lookup-order" placeholder="e.g. DV-2026-00123">
+              <span class="field-error" id="err-lookup-order"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Find My Downloads</button>
+            <p id="lookup-msg" aria-live="polite" style="margin-top:.875rem;font-size:.9375rem;color:#64748b"></p>
+          </form>
+        </div>
+        <p style="text-align:center;color:#64748b;font-size:.9375rem">
+          Didn't receive your email? <a href="contact.html">Contact support</a> and we will re-send your link within one business day.
+        </p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/><path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          DigitalVault
+        </a>
+        <p>Premium digital products delivered instantly.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html">All Products</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="container footer-bottom-inner"><p>&copy; 2026 DigitalVault. All rights reserved.</p></div></div>
+  </footer>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent"><p>We use cookies to keep your cart and remember preferences. <a href="privacy.html">Privacy Policy</a></p><div class="cookie-actions"><button class="btn btn-ghost btn-sm" id="cookie-decline">Essential only</button><button class="btn btn-primary btn-sm" id="cookie-accept">Accept all</button></div></div>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('lookup-form');
+      var msg = document.getElementById('lookup-msg');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('lookup-email').value.trim();
+          if (!email) {
+            document.getElementById('err-lookup-email').textContent = 'Email address is required.';
+            return;
+          }
+          /* In production: POST to your API to look up the order and return links */
+          if (msg) msg.textContent = 'Looking up your order...';
+          setTimeout(function () {
+            if (msg) msg.textContent = 'If an order was found for that email, the download link has been re-sent. Please check your inbox and spam folder.';
+          }, 1000);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
